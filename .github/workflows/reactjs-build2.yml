@@ -1,0 +1,41 @@
+name: React JS Build
+
+on: [ push, workflow_dispatch ]:
+    branchs:
+        main
+    path:
+        "react2/**"
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: git checkout
+              uses: actions/checkout@v6
+            
+            - name: install dependencies
+              run: npm ci
+
+            - name: build
+              run: npm run build
+
+    test:
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - name: linting
+              run: npm i -g lint
+
+            - name: testing
+              run: npm test
+
+    deploy:
+        runs-on: ubuntu-latest
+        needs: test
+        steps:
+            - name: deploying the application
+              run: echo "deploying app"
+
+        
+
+        
