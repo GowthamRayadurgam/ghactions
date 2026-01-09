@@ -25,7 +25,10 @@ jobs:
         run: cd react-proj
 
       - name: Install dependencies
-        run: npm install
+        run: |
+         cd react-proj
+         npm install
+         
       
       - name: run tests
         run: npm test
