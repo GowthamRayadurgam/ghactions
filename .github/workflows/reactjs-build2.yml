@@ -24,13 +24,6 @@ jobs:
             - name: build
               run: npm run build
               working-directory: ${{ env.working-dir }}
-
-    test:
-        runs-on: ubuntu-latest
-        needs: build
-        steps:
-            - name: git checkout
-              uses: actions/checkout@v6
             - name: linting
               run: npm i -g lint
               working-directory: ${{ env.working-dir }}
@@ -41,7 +34,7 @@ jobs:
 
     deploy:
         runs-on: ubuntu-latest
-        needs: test
+        needs: build
         steps:
             - name: deploying the application
               run: echo "deploying app"
