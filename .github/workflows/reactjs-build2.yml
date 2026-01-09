@@ -31,9 +31,11 @@ jobs:
         steps:
             - name: linting
               run: npm i -g lint
+              working-directory: ${{ env.working-dir }}
 
             - name: testing
               run: npm test
+              working-directory: ${{ env.working-dir }}
 
     deploy:
         runs-on: ubuntu-latest
