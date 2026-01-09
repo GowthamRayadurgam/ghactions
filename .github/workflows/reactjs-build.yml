@@ -20,16 +20,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      
-      - name: change working directory
-        run: cd react-proj
 
       - name: Install dependencies
         run: |
-         cd react-proj
          npm install
-         
+        working-directory: ./react-proj        
       
       - name: run tests
         run: npm test
+        working-directory: ./react-proj  
         
