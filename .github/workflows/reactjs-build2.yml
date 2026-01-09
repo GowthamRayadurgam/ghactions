@@ -1,10 +1,11 @@
 name: React JS Build
 
-on: [ push, workflow_dispatch ]:
-    branchs:
-        main
-    path:
-        "react2/**"
+on: 
+  push:
+    branches: [main]
+    paths:
+        ["react2/**"]
+  workflow_dispatch:
 
 jobs:
     build:
