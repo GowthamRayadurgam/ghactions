@@ -15,9 +15,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: install nodeJs
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v3
         with:
-          node-version: 24
+          node-version: 18
 
       - name: Install dependencies
         run: npm ci
