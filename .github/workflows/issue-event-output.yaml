@@ -1,0 +1,11 @@
+name: Output Issues event details
+
+on:
+    issues
+
+jobs:
+    output:
+        runs-on: ubuntu-latest
+        steps:
+         - name: output issue event context details
+           run: echo "Issue context details are ${{ github.event }}"
