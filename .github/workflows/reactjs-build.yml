@@ -6,6 +6,8 @@ on:
     branches: ["main"]
     paths:
       - 'react-proj/**'
+      
+  workflow_dispatch:
 
 jobs:
   test-job:
