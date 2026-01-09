@@ -14,7 +14,7 @@ env:
   workingdir: ./react-proj
 
 jobs:
-  test-job:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - name: get code
