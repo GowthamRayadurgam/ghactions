@@ -6,6 +6,7 @@ on:
     branches: ["main"]
     paths:
       - 'react-proj/**'
+      - '.github/workflows/reactjs-build.yml'
 
   workflow_dispatch:
 
