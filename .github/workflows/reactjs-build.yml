@@ -5,7 +5,23 @@ on:
   push:
     branches: ["main"]
     paths:
-      - 'react-proj/*'
+      - 'react-proj/**'
 
 jobs:
   test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+
+      - name: install nodeJs
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: run tests
+        run: npm test
+        
