@@ -6,7 +6,7 @@ on:
     branches: ["main"]
     paths:
       - 'react-proj/**'
-      
+
   workflow_dispatch:
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       
       - name: run tests
         run: npm test
