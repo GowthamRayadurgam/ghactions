@@ -31,7 +31,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm install
         working-directory: ${{ env.workingdir }}
 
       - name: linting
@@ -67,7 +67,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm install
         working-directory: ${{ env.workingdir }}
       
       - name: build
