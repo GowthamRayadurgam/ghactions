@@ -12,14 +12,18 @@ jobs:
         permissions:
          actions: read
          contents: read
-         
+
         steps:
+            - run: |
+                echo "Run ID: ${{ github.event.workflow_run.id }}"
+                echo "Workflow: ${{ github.event.workflow_run.name }}"
+
             - name: download artifact
               uses: actions/download-artifact@v5
               with:
                 name: build-artifacts
+                github-token: GHACTIONS_PAT
                 run-id: ${{ github.event.workflow_run.id }}
-                path: dist/
                 
             - name: list the artifact files
               run: ls -lrt
