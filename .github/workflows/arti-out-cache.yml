@@ -1,0 +1,80 @@
+name: React Artifact output cache
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - 'proj3/**'
+    
+  workflow_dispatch:
+
+env:
+  workingdir: './proj3'
+
+jobs:
+  npm-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: caching dependencies
+        id: cache
+        uses: action/cache@v4
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}  
+          restore-keys: |
+            ${{ runner.os }}-node-        
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+        working-directory: ${{ env.workingdir }}
+
+      - name: linting
+        run: npm i -g lint
+        working-directory: ${{ env.workingdir }}
+              
+      - name: testing the code
+        run: npm test
+        working-directory: ${{ env.workingdir }}
+
+  build:
+    runs-on: ubuntu-latest
+    needs: npm-test
+    steps:
+      - name: Code checkout
+        uses: action/checkout@v3
+      
+      - name: install nodeJs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: caching dependencies
+        id: cache
+        uses: action/cache@v4
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}  
+          restore-keys: |
+            ${{ runner.os }}-node-        
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+        working-directory: ${{ env.workingdir }}
+      
+      - name: build
+        run: npm run build
+        working-directory: ${{ env.workingdir }}
+
+      - name: artifact upload
+        uses: actions/upload-artifact@4
+        with:
+          name: build-artifacts
+          path: |
+            ./dist

@@ -1,0 +1,21 @@
+name: Deploy app
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+
+
+jobs:
+    on-success:
+        runs-on: ubuntu-latest
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        steps:
+            - name: download artifact
+              uses: actions/downlard-artifact@v5
+              with:
+                name: build-artifacts
+                
+            - name: list the artifact files
+              run: ls -lrt
+
+              
