@@ -77,4 +77,4 @@ jobs:
         with:
           name: build-artifacts
           path: |
-            ./${{ env.workingdir }}/dist
+            ${{ env.workingdir }}/dist
