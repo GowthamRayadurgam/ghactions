@@ -48,10 +48,10 @@ jobs:
       - name: Code checkout
         uses: actions/checkout@v3
       
-      - name: install nodeJs
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      # - name: install nodeJs
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18
 
       - name: caching dependencies
         id: cache
