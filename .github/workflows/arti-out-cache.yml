@@ -20,7 +20,7 @@ jobs:
 
       - name: caching dependencies
         id: cache
-        uses: action/cache@v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/.npm
@@ -46,7 +46,7 @@ jobs:
     needs: npm-test
     steps:
       - name: Code checkout
-        uses: action/checkout@v3
+        uses: actions/checkout@v3
       
       - name: install nodeJs
         uses: actions/setup-node@v3
@@ -55,7 +55,7 @@ jobs:
 
       - name: caching dependencies
         id: cache
-        uses: action/cache@v4
+        uses: actions/cache@v4
         with:
           path: |
             ~/.npm
