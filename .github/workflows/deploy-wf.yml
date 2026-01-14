@@ -22,7 +22,7 @@ jobs:
               uses: actions/download-artifact@v5
               with:
                 name: build-artifacts
-                github-token: GHACTIONS_PAT
+                github-token: ${{ secrets.GHACTIONS_PAT }}
                 run-id: ${{ github.event.workflow_run.id }}
                 
             - name: list the artifact files
