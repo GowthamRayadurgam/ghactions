@@ -1,4 +1,4 @@
-name: React Artifact output cache
+name: React-Artifact-output-cache
 on:
   push:
     branches: ["main"]

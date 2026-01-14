@@ -1,7 +1,7 @@
 name: Deploy app
 on:
   workflow_run:
-    workflows: [Build]
+    workflows: [React-Artifact-output-cache]
     types: [completed]
 
 
