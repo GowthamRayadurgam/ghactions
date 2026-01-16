@@ -5,13 +5,13 @@ on:
   push:
     branches: ["main"]
     paths:
-      - 'react-proj/**'
+      - 'react-proj1/**'
       - '.github/workflows/reactjs-build.yml'
 
   workflow_dispatch:
 
 env:
-  workingdir: ./react-proj
+  workingdir: ./react-proj1
 
 jobs:
   Build:

@@ -3,12 +3,12 @@ on:
   push:
     branches: ["main"]
     paths:
-      - 'proj3/**'
+      - 'react-proj3/**'
     
   workflow_dispatch:
 
 env:
-  workingdir: './proj3'
+  workingdir: './react-proj3'
 
 jobs:
   npm-test:
@@ -24,7 +24,7 @@ jobs:
           path: |
             ~/.npm
             node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('./proj3/package-lock.json') }}  
+          key: ${{ runner.os }}-node-${{ hashFiles('./react-proj3/package-lock.json') }}  
           restore-keys: |
             ${{ runner.os }}-node-
 
@@ -68,7 +68,7 @@ jobs:
           path: |
             ~/.npm
             node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('./proj3/package-lock.json') }}  
+          key: ${{ runner.os }}-node-${{ hashFiles('./react-proj3/package-lock.json') }}  
           restore-keys: |
             ${{ runner.os }}-node-
 

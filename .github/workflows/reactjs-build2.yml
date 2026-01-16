@@ -4,11 +4,11 @@ on:
   push:
     branches: [main]
     paths:
-        ["react2/**"]
+        ["react-proj2/**"]
   workflow_dispatch:
 
 env:
-    working-dir: "./react2"
+    working-dir: "./react-proj2"
 
 jobs:
     build:
