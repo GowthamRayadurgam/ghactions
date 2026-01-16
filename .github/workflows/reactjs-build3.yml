@@ -44,7 +44,7 @@ jobs:
 
       - name: output test failure artifact
         if: steps.test.outcome == 'failure'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-report
           path: test.json
