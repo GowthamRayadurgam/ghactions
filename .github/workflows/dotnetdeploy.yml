@@ -11,15 +11,15 @@ permissions:
   contents: read
 jobs:
   build-and-deploy:
-    runs-on: windows-latest
+    runs-on: [self-hosted, linux, x64]
 #    environment: dev
     steps:
-      - name: Azure login
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        - name: Azure login
+          uses: azure/login@v2
+          with:
+            client-id: ${{ secrets.AZURE_CLIENT_ID }}
+            tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
 # CONFIGURATION
 # For help, go to https://github.com/Azure/Actions
@@ -29,26 +29,26 @@ jobs:
 #
 # 2. Change these variables for your configuration:
 
-      - name: 'Checkout GitHub Action'
-        uses: actions/checkout@v3
+        - name: 'Checkout GitHub Action'
+          uses: actions/checkout@v3
 
-      - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
+        - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
+          uses: actions/setup-dotnet@v3
+          with:
+           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: 'Resolve Project Dependencies Using Dotnet'
-        shell: pwsh
-        run: |
-          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-          dotnet build --configuration Release --output ./output
-          popd
+        - name: 'Resolve Project Dependencies Using Dotnet'
+          shell: bash
+          run: |
+           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+           dotnet build --configuration Release --output ./output
+           popd
 
-      - name: 'Run Azure Functions Action'
-        uses: Azure/functions-action@v1
-        id: fa
-        with:
-          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
+        - name: 'Run Azure Functions Action'
+          uses: Azure/functions-action@v1
+          id: fa
+          with:
+           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
 
 # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
