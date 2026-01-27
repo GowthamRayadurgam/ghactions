@@ -3,16 +3,17 @@ on:
   push:
     branches: ["main"]
     paths:
-      - 'react-proj3/**'
+      - 'reactoct/**'
     
   workflow_dispatch:
 
 env:
-  workingdir: './react-proj3'
+  workingdir: './reactoct'
 
 jobs:
   npm-test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
+#    runs-on: ubuntu-latest
     steps:
       - name: checkout code
         uses: actions/checkout@v3
@@ -24,7 +25,7 @@ jobs:
           path: |
             ~/.npm
             node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('./react-proj3/package-lock.json') }}  
+          key: ${{ runner.os }}-node-${{ hashFiles('./reactoct/package-lock.json') }}  
           restore-keys: |
             ${{ runner.os }}-node-
 
@@ -50,7 +51,8 @@ jobs:
           path: test.json
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
+#    runs-on: ubuntu-latest
     needs: npm-test
     steps:
       - name: Code checkout
@@ -68,7 +70,7 @@ jobs:
           path: |
             ~/.npm
             node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('./react-proj3/package-lock.json') }}  
+          key: ${{ runner.os }}-node-${{ hashFiles('./reactoct/package-lock.json') }}  
           restore-keys: |
             ${{ runner.os }}-node-
 
@@ -86,7 +88,7 @@ jobs:
         with:
           name: build-artifacts
           path: |
-            ${{ env.workingdir }}/dist
+            ${{ env.workingdir }}/build/
 
 
     

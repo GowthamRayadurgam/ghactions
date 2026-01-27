@@ -7,7 +7,8 @@ on:
 
 jobs:
     on-success:
-        runs-on: ubuntu-latest
+        runs-on: [self-hosted, linux, x64]
+#        runs-on: ubuntu-latest
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         permissions:
          actions: read
@@ -25,7 +26,11 @@ jobs:
                 github-token: ${{ secrets.GHACTIONS_PAT }}
                 run-id: ${{ github.event.workflow_run.id }}
                 
-            - name: list the artifact files
-              run: ls -lrt
+            - name: 'Deploy to Azure Web App'
+              id: deploy-to-webapp
+              uses: azure/webapps-deploy@v2
+              with:
+               app-name: 'reactnative'
+               package: .
 
               
