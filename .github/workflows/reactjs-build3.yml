@@ -94,7 +94,8 @@ jobs:
         
       - name: Android Build (APK + AAB) 
         run: | 
-         cd android fastlane build 
+         cd android 
+         fastlane build 
          
       - name: Upload Android AAB Artifact 
         uses: actions/upload-artifact@v4 
@@ -109,7 +110,8 @@ jobs:
           
       - name: iOS Build (IPA) 
         run: | 
-         cd ios fastlane build 
+         cd ios 
+         fastlane build 
       - name: Upload iOS Artifact 
         uses: actions/upload-artifact@v4 
         with: 
