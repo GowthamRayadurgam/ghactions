@@ -4,6 +4,9 @@ on:
     workflows: [React-Artifact-output-cache]
     types: [completed]
 
+permissions:
+   id-token: write
+   contents: read
 
 jobs:
     on-success:
