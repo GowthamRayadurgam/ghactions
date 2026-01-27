@@ -51,8 +51,8 @@ jobs:
 #           path: test.json
 
   build:
-    runs-on: [self-hosted, linux, x64]
-#    runs-on: ubuntu-latest
+#    runs-on: [self-hosted, linux, x64]
+    runs-on: macos-latest
 #    needs: npm-test
     steps:
       - name: Code checkout
@@ -78,6 +78,43 @@ jobs:
 #        if: steps.cache.outputs.cache-hit != 'true'
         run: npm install
         working-directory: ${{ env.workingdir }}
+
+      - name: Setup Java 
+        uses: actions/setup-java@v3 
+        with: 
+          distribution: 'temurin' 
+          java-version: '17'
+      - name: Setup Ruby 
+        uses: ruby/setup-ruby@v1 
+        with: 
+          ruby-version: '3.1' 
+          
+      - name: Install Fastlane 
+        run: gem install fastlane 
+        
+      - name: Android Build (APK + AAB) 
+        run: | 
+         cd android fastlane build 
+         
+      - name: Upload Android AAB Artifact 
+        uses: actions/upload-artifact@v4 
+        with: 
+          name: android-aab 
+          path: android/app/build/outputs/bundle/release/*.aab 
+      - name: Upload Android APK Artifact 
+        uses: actions/upload-artifact@v4 
+        with: 
+          name: android-apk 
+          path: android/app/build/outputs/apk/release/*.apk 
+          
+      - name: iOS Build (IPA) 
+        run: | 
+         cd ios fastlane build 
+      - name: Upload iOS Artifact 
+        uses: actions/upload-artifact@v4 
+        with: 
+          name: ios-ipa 
+          path: ios/build/*.ipa
       
       - name: build
         run: npm run build
