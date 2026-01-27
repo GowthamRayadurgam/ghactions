@@ -35,7 +35,7 @@ jobs:
         working-directory: ${{ env.workingdir }}
 
       - name: linting
-        run: npm i -g lint
+        run: npm run lint
         working-directory: ${{ env.workingdir }}
               
       - name: testing-the-code
