@@ -87,10 +87,12 @@ jobs:
       - name: Setup Ruby 
         uses: ruby/setup-ruby@v1 
         with: 
-          ruby-version: '3.1' 
+          ruby-version: '3.2' 
           
       - name: Install Fastlane 
-        run: gem install fastlane 
+        run: |
+         gem install fastlane -NV
+         echo "::add-path::$(gem environment gemdir)/bin"
         
       - name: Android Build (APK + AAB) 
         run: | 
@@ -103,7 +105,7 @@ jobs:
         with: 
           name: android-aab 
           path: android/app/build/outputs/bundle/release/*.aab
-          
+
       - name: Upload Android APK Artifact 
         uses: actions/upload-artifact@v4 
         with: 
