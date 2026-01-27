@@ -92,7 +92,7 @@ jobs:
       - name: Install Fastlane 
         run: |
          gem install fastlane -NV
-         echo "::add-path::$(gem environment gemdir)/bin"
+         bundler-cache: true
         
       - name: Android Build (APK + AAB) 
         run: | 
