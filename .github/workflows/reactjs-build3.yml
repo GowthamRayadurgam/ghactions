@@ -88,11 +88,11 @@ jobs:
         uses: ruby/setup-ruby@v1 
         with: 
           ruby-version: '3.2' 
+          bundler-cache: true
           
       - name: Install Fastlane 
         run: |
          gem install fastlane -NV
-         bundler-cache: true
         
       - name: Android Build (APK + AAB) 
         run: | 
