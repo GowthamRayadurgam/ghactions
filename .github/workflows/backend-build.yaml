@@ -2,6 +2,7 @@ name: Backend_workflow
 on:
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 # Prevent race conditions: cancel previous runs for same branch/PR
 concurrency:
