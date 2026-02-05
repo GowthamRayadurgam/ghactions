@@ -43,16 +43,13 @@
           "Microsoft.Bcl.AsyncInterfaces": "5.0.0"
         }
       },
-      "Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore": {
+      "Microsoft.Azure.Functions.Worker.Extensions.Http": {
         "type": "Direct",
-        "requested": "[1.3.1, )",
-        "resolved": "1.3.1",
-        "contentHash": "NQM7X2dPGCD6xn59jCQOiFBgCpRFt6aci/NZ4I+hRF/Z/79mb2HFLAJGwYNzsqMk0IjrW4MAJNmI+5tJaASDbQ==",
+        "requested": "[3.0.13, )",
+        "resolved": "3.0.13",
+        "contentHash": "GX41psGbjLSPKuFnBcGGB7PAAdhfLsgxvGVsyGq/jQwgGwjAVRRx2UbSl35+imKwCPZdT5vGjq6YV1rgXIeEvA==",
         "dependencies": {
-          "Microsoft.Azure.Functions.Worker": "1.22.0",
-          "Microsoft.Azure.Functions.Worker.Extensions.Abstractions": "1.3.0",
-          "Microsoft.Azure.Functions.Worker.Extensions.Http": "3.2.0",
-          "Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.Analyzers": "1.0.2"
+          "Microsoft.Azure.Functions.Worker.Extensions.Abstractions": "1.0.0"
         }
       },
       "Microsoft.Azure.Functions.Worker.Sdk": {
@@ -202,20 +199,6 @@
         "type": "Transitive",
         "resolved": "1.3.0",
         "contentHash": "+6+/Yb/ouWUweaSQhesbbiIVSmwYEzkSfjIHrBnNqIiCYnx2iLeoYyWjN/wHP3Fnn5COtyDXRDwHKr5A/tCL9Q=="
-      },
-      "Microsoft.Azure.Functions.Worker.Extensions.Http": {
-        "type": "Transitive",
-        "resolved": "3.2.0",
-        "contentHash": "TC1xa/s1hZ97ertSh0+qZVjeXB632ObjsuVEhytND32kLfJhT7u+AiBunvdACgn6r0WOZeLIa/BZPA7qovFxiw==",
-        "dependencies": {
-          "Microsoft.Azure.Functions.Worker.Core": "1.18.0",
-          "Microsoft.Azure.Functions.Worker.Extensions.Abstractions": "1.3.0"
-        }
-      },
-      "Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore.Analyzers": {
-        "type": "Transitive",
-        "resolved": "1.0.2",
-        "contentHash": "PrB2dW3LiEn3RdWyLMVQ5U6K497GMwu7TJxfakvV6OYP7nc3kbhDs0ekEtC4TfMcOMzz2B6Y8JTN4ofM2jQ9wQ=="
       },
       "Microsoft.Azure.Functions.Worker.Grpc": {
         "type": "Transitive",
