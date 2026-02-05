@@ -34,7 +34,7 @@ jobs:
     with:
       project-type: backend
       dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
-      cache-dependency-path: ghactions/backend/functionapp/packages.lock.json
+      cache-dependency-path: ./backend/functionapp/packages.lock.json
     secrets:
       personal_access_token: ${{ secrets.GHACTIONS_PAT }}
         
