@@ -33,9 +33,9 @@ jobs:
     uses: GowthamRayadurgam/ghactions-reusible/.github/workflows/pilot-checks.yaml@main
     with:
       project-type: backend
-      dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
-      cache-dependency-path: ${{ needs.vars.outputs.cache_dependency_path }}
-      azure_functionapp_package_path: ${{ needs.vars.outputs.azure_functionapp_package_path }}
+      dotnet-version: 6.0.x
+      cache-dependency-path: ./backend/functionapp/packages.lock.json
+      azure_functionapp_package_path: ./backend/functionapp
     secrets:
       personal_access_token: ${{ secrets.GHACTIONS_PAT }}
         
@@ -44,8 +44,8 @@ jobs:
     uses: GowthamRayadurgam/ghactions-reusible/.github/workflows/build.yaml@main
     with:
       project-type: backend
-      dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
-      azure_functionapp_package_path: ${{ needs.vars.outputs.azure_functionapp_package_path }}
-      cache-dependency-path: ${{ needs.vars.outputs.cache_dependency_path }}
+      dotnet-version: 6.0.x
+      azure_functionapp_package_path: ./backend/functionapp
+      cache-dependency-path: ./backend/functionapp/packages.lock.json
     secrets:
       personal_access_token: ${{ secrets.GHACTIONS_PAT }}
