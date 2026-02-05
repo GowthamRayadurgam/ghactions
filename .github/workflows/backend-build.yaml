@@ -44,6 +44,5 @@ jobs:
       project-type: backend
       dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
       azure_functionapp_package_path: ${{ needs.vars.outputs.azure_functionapp_package_path }}
-      global-json-file: ${{ needs.vars.outputs.global_json_file }}
     secrets:
       personal_access_token: ${{ secrets.GHACTIONS_PAT }}
