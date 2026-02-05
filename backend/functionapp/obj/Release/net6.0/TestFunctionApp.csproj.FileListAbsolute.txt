@@ -1,0 +1,6 @@
+C:\Users\gowtham_rayadurgam\learning\github-actions\backend\functionapp\obj\Release\net6.0\TestFunctionApp.csproj.AssemblyReference.cache
+C:\Users\gowtham_rayadurgam\learning\github-actions\backend\functionapp\obj\Release\net6.0\TestFunctionApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gowtham_rayadurgam\learning\github-actions\backend\functionapp\obj\Release\net6.0\TestFunctionApp.AssemblyInfoInputs.cache
+C:\Users\gowtham_rayadurgam\learning\github-actions\backend\functionapp\obj\Release\net6.0\TestFunctionApp.AssemblyInfo.cs
+C:\Users\gowtham_rayadurgam\learning\github-actions\backend\functionapp\obj\Release\net6.0\TestFunctionApp.csproj.CoreCompileInputs.cache
+C:\Users\gowtham_rayadurgam\learning\github-actions\backend\functionapp\obj\Release\net6.0\TestFunctionApp.sourcelink.json
