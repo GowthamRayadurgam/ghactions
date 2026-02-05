@@ -1,0 +1,46 @@
+name: Backend_workflow
+on:
+  pull_request:
+    branches: [main]
+
+# Prevent race conditions: cancel previous runs for same branch/PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'backend/functionapp'
+  DOTNET_VERSION: '6.0.x'
+
+jobs:
+  vars:
+    runs-on: ubuntu-latest
+    outputs:
+      dotnet_version: ${{ steps.set.outputs.dotnet_version }}
+      azure_functionapp_package_path: ${{ steps.set.outputs.azure_functionapp_package_path }}
+    steps:
+      - name: Set pipeline canonical values
+        id: set
+        run: |
+            echo "dotnet_version=${{ env.DOTNET_VERSION }}" >> $GITHUB_OUTPUT
+            echo "azure_functionapp_package_path=${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}" >> $GITHUB_OUTPUT
+
+  preflight:
+    needs: vars
+    uses: GowthamRayadurgam/ghactions-reusible/.github/workflows/pilot-checks.yaml@main
+    with:
+      project-type: backend
+      dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
+      azure_functionapp_package_path: ${{ needs.vars.outputs.azure_functionapp_package_path }}
+    secrets:
+      personal_access_token: ${{ secrets.GHACTIONS_PAT }}
+        
+  build:
+    needs: preflight
+    uses: GowthamRayadurgam/ghactions-reusible/.github/workflows/build.yml@main
+    with:
+      project-type: backend
+      dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
+      azure_functionapp_package_path: ${{ needs.vars.outputs.azure_functionapp_package_path }}
+    secrets:
+      personal_access_token: ${{ secrets.GHACTIONS_PAT }}
