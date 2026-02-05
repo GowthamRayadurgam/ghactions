@@ -38,7 +38,7 @@ jobs:
         
   build:
     needs: preflight
-    uses: GowthamRayadurgam/ghactions-reusible/.github/workflows/build.yml@main
+    uses: GowthamRayadurgam/ghactions-reusible/.github/workflows/build.yaml@main
     with:
       project-type: backend
       dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
