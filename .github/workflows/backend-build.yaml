@@ -35,6 +35,7 @@ jobs:
       project-type: backend
       dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
       cache-dependency-path: ./backend/functionapp/packages.lock.json
+      azure_functionapp_package_path: ./backend/functionapp
     secrets:
       personal_access_token: ${{ secrets.GHACTIONS_PAT }}
         
@@ -44,7 +45,7 @@ jobs:
     with:
       project-type: backend
       dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
-      azure_functionapp_package_path: ${{ needs.vars.outputs.azure_functionapp_package_path }}
+      azure_functionapp_package_path: ./backend/functionapp
       cache-dependency-path: ${{ needs.vars.outputs.cache_dependency_path }}
     secrets:
       personal_access_token: ${{ secrets.GHACTIONS_PAT }}
