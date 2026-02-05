@@ -10,9 +10,9 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: './backend/functionapp'       # set this to the path to your function app project, defaults to the repository root
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: ./backend/functionapp       # set this to the path to your function app project, defaults to the repository root
   DOTNET_VERSION: '6.0.x'
-  cache-dependency-path: ghactions/backend/functionapp/packages.lock.json
+  cache-dependency-path: ./backend/functionapp/packages.lock.json
 
 jobs:
   vars:
@@ -34,8 +34,8 @@ jobs:
     with:
       project-type: backend
       dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
-      cache-dependency-path: ./backend/functionapp/packages.lock.json
-      azure_functionapp_package_path: ./backend/functionapp
+      cache-dependency-path: ${{ needs.vars.outputs.cache_dependency_path }}
+      azure_functionapp_package_path: ${{ needs.vars.outputs.azure_functionapp_package_path }}
     secrets:
       personal_access_token: ${{ secrets.GHACTIONS_PAT }}
         
@@ -45,7 +45,7 @@ jobs:
     with:
       project-type: backend
       dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
-      azure_functionapp_package_path: ./backend/functionapp
+      azure_functionapp_package_path: ${{ needs.vars.outputs.azure_functionapp_package_path }}
       cache-dependency-path: ${{ needs.vars.outputs.cache_dependency_path }}
     secrets:
       personal_access_token: ${{ secrets.GHACTIONS_PAT }}
