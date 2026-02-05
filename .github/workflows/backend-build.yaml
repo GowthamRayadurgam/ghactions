@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: 'backend/functionapp'
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './ghactions-azure-authentication-test'
   DOTNET_VERSION: '6.0.x'
 
 jobs:
@@ -32,7 +32,6 @@ jobs:
     with:
       project-type: backend
       dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
-      azure_functionapp_package_path: ${{ needs.vars.outputs.azure_functionapp_package_path }}
     secrets:
       personal_access_token: ${{ secrets.GHACTIONS_PAT }}
         
