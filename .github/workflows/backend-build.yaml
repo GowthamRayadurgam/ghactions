@@ -47,5 +47,6 @@ jobs:
       dotnet-version: 6.0.x
       azure_functionapp_package_path: ./backend/functionapp
       cache-dependency-path: ./backend/functionapp/packages.lock.json
+      build-directory: ./backend/functionapp/output
     secrets:
       personal_access_token: ${{ secrets.GHACTIONS_PAT }}
