@@ -10,8 +10,9 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: './ghactions-azure-authentication-test'
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: './backend/functionapp'       # set this to the path to your function app project, defaults to the repository root
   DOTNET_VERSION: '6.0.x'
+  GLOBAL_JSON_FILE: './global.json'
 
 jobs:
   vars:
@@ -25,6 +26,7 @@ jobs:
         run: |
             echo "dotnet_version=${{ env.DOTNET_VERSION }}" >> $GITHUB_OUTPUT
             echo "azure_functionapp_package_path=${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}" >> $GITHUB_OUTPUT
+            echo "global_json_file=${{ env.GLOBAL_JSON_FILE }}" >> $GITHUB_OUTPUT
 
   preflight:
     needs: vars
@@ -42,5 +44,6 @@ jobs:
       project-type: backend
       dotnet-version: ${{ needs.vars.outputs.dotnet_version }}
       azure_functionapp_package_path: ${{ needs.vars.outputs.azure_functionapp_package_path }}
+      global-json-file: ${{ needs.vars.outputs.global_json_file }}
     secrets:
       personal_access_token: ${{ secrets.GHACTIONS_PAT }}
