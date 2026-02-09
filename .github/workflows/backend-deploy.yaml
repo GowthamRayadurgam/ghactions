@@ -1,0 +1,19 @@
+name: Backend_Deploy_workflow
+on:
+  workflow_run:
+    workflows: [React-Artifact-output-cache]
+    types: [completed]
+
+jobs:
+    on-success:
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        permissions:
+         id-token: write
+         actions: read
+         contents: read
+
+        uses: GowthamRayadurgam/ghactions-reusible/.github/workflows/deploy.yaml@main
+        with:
+          project-type: backend
+          azure_functionapp_name: 'citest15478'
+          azure_functionapp_package_path: './backend/functionapp/output'

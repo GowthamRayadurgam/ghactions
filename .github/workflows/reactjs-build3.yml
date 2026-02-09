@@ -93,11 +93,6 @@ jobs:
       - name: Install Fastlane 
         run: |
          gem install fastlane -NV
-
-      - name: generate fastlane files
-        run: |
-         mkdir mobile && cd mobile
-         fastlane init
         
       - name: Android Build (APK + AAB) 
         run: | 
