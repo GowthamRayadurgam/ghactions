@@ -30,6 +30,8 @@ jobs:
          project-type: backend
          azure_functionapp_name: 'citest15478'
 #         azure_functionapp_package_path: './backend/functionapp'
+         azure_keyvault_name: 'ci-kv-15478'
+         secrets: 'test1,test2'
         secrets:
          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
