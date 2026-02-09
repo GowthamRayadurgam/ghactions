@@ -28,3 +28,7 @@ jobs:
          project-type: backend
          azure_functionapp_name: 'citest15478'
          azure_functionapp_package_path: './backend/functionapp/output'
+        secrets:
+         AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+         AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+         AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
