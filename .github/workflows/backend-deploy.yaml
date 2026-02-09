@@ -5,31 +5,44 @@ on:
     types: [completed]
 
 jobs:
-    artifact-pull:
-        runs-on: ubuntu-latest
-        if: ${{ github.event.workflow_run.conclusion == 'success' }}
-        permissions:
-         actions: read
-         contents: read
-        steps:
-         - name: download artifact
-           uses: actions/download-artifact@v4
-           with:
-            name: build-artifacts-backend
-            github-token: ${{ secrets.GHACTIONS_PAT }}
-            run-id: ${{ github.event.workflow_run.id }}
+  deploy:
+   permissions:
+    id-token: write
+    contents: read
+   uses: GowthamRayadurgam/ghactions-reusible/.github/workflows/deploy.yaml@main
+   with:
+     project-type: backend
+     azure_functionapp_name: citest15478
+     artifact-name: functionapp
 
-    deploy:
-        permissions:
-         id-token: write
 
-        needs: artifact-pull
-        uses: GowthamRayadurgam/ghactions-reusible/.github/workflows/deploy.yaml@main
-        with:
-         project-type: backend
-         azure_functionapp_name: 'citest15478'
-         azure_functionapp_package_path: './backend/functionapp'
-        secrets:
-         AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-         AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-         AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+
+#     artifact-pull:
+#         runs-on: ubuntu-latest
+#         if: ${{ github.event.workflow_run.conclusion == 'success' }}
+#         permissions:
+#          actions: read
+#          contents: read
+#         steps:
+#          - name: download artifact
+#            uses: actions/download-artifact@v4
+#            with:
+#             name: build-artifacts-backend
+#             github-token: ${{ secrets.GHACTIONS_PAT }}
+#             run-id: ${{ github.event.workflow_run.id }}
+
+#     deploy:
+#         permissions:
+#          id-token: write
+
+#         needs: artifact-pull
+#         uses: GowthamRayadurgam/ghactions-reusible/.github/workflows/deploy.yaml@main
+#         with:
+#          project-type: backend
+#          azure_functionapp_name: 'citest15478'
+# #         azure_functionapp_package_path: './backend/functionapp'
+#         secrets:
+#          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+#          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+#          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
