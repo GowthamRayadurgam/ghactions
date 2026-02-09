@@ -1,7 +1,7 @@
 name: Backend_Deploy_workflow
 on:
   workflow_run:
-    workflows: [React-Artifact-output-cache]
+    workflows: [Backend_Build_workflow]
     types: [completed]
 
 jobs:
