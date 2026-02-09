@@ -5,15 +5,26 @@ on:
     types: [completed]
 
 jobs:
-    on-success:
+    artifact-pull:
+        runs-on: ubuntu-latest
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         permissions:
          id-token: write
          actions: read
          contents: read
 
+        steps:
+         - name: download artifact
+           uses: actions/download-artifact@v4
+           with:
+            name: build-artifacts-backend
+            github-token: ${{ secrets.GHACTIONS_PAT }}
+            run-id: ${{ github.event.workflow_run.id }}
+
+    deploy:
+        needs: artifact-pull
         uses: GowthamRayadurgam/ghactions-reusible/.github/workflows/deploy.yaml@main
         with:
-          project-type: backend
-          azure_functionapp_name: 'citest15478'
-          azure_functionapp_package_path: './backend/functionapp/output'
+         project-type: backend
+         azure_functionapp_name: 'citest15478'
+         azure_functionapp_package_path: './backend/functionapp/output'
