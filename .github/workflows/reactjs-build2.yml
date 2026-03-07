@@ -35,7 +35,7 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                 name: react-app-build
-                path: react-proj2/build
+                path: ${{ env.working-dir }}/dist
             
 
     deploy:
