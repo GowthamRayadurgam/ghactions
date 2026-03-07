@@ -51,6 +51,9 @@ jobs:
         - name: listing downloaded artifact
           shell: bash
           run: |
+            ls -la .
+            ls -la ${{ github.workspace }}
+            ls -la ${{ env.working-dir }}
             ls -la react-app-build
             ls -la react-app-build/dist
 
