@@ -54,7 +54,6 @@ jobs:
           run: |
             ls -la .
             ls -la ${{ github.workspace }}
-            ls -la ${{ env.working-dir }}
             ls -la react-app-build
 
         - name: deploy to azure
