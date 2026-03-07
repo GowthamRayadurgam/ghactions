@@ -1,5 +1,7 @@
 // API service for communicating with Azure Function App backend
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:7071/api';
+// Local dev: uses VITE_API_BASE_URL env var pointing to local Function App
+// Azure (SWA deployment): uses /api which SWA proxies to linked Function App backend
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
 
 export const apiService = {
   // Fetch data from the backend

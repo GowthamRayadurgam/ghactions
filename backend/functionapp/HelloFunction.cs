@@ -15,9 +15,6 @@ namespace TestFunctionApp
         {
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "application/json");
-            response.Headers.Add("Access-Control-Allow-Origin", "*");
-            response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-            response.Headers.Add("Access-Control-Allow-Headers", "Content-Type");
 
             var data = new
             {
@@ -39,7 +36,6 @@ namespace TestFunctionApp
         {
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "application/json");
-            response.Headers.Add("Access-Control-Allow-Origin", "*");
 
             var healthData = new
             {

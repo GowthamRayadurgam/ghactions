@@ -36,12 +36,9 @@ This setup demonstrates communication between a React Static Web App frontend an
      }
      ```
 
-### CORS Configuration
+### Why No CORS?
 
-Both functions include CORS headers to allow requests from the frontend:
-- `Access-Control-Allow-Origin: *`
-- `Access-Control-Allow-Methods: GET, POST, OPTIONS`
-- `Access-Control-Allow-Headers: Content-Type`
+When deployed to Azure Static Web Apps with a linked API backend, SWA handles routing and CORS automatically. The frontend communicates through SWA's `/api` route prefix, which proxies requests to the Function App backend. CORS headers are not needed with this native integration.
 
 ### Local Development
 
@@ -87,14 +84,9 @@ A dedicated component (`src/components/BackendTest.jsx`) for testing backend com
    <BackendTest />
    ```
 
-2. Configure API endpoint in `.env.local`:
-   ```
-   # Local development
-   VITE_API_BASE_URL=http://localhost:7071/api
-   
-   # Production (Azure)
-   VITE_API_BASE_URL=https://your-function-app-name.azurewebsites.net/api
-   ```
+2. **Configure API endpoint:**
+   - **Local Development:** Set `VITE_API_BASE_URL=http://localhost:7071/api` in `.env.local`
+   - **Azure Deployment:** No environment variable needed! SWA automatically routes `/api` requests to the linked Function App backend.
 
 ## Testing Flow
 
@@ -118,16 +110,24 @@ A dedicated component (`src/components/BackendTest.jsx`) for testing backend com
 3. **SWA + Function App (Deployed)**
    - Deploy React app to Azure Static Web Apps
    - Deploy Function App to Azure
-   - Update `.env.local` with Function App URL
+   - Link Function App as API backend to SWA (no env var needed)
    - Test communication from the deployed SWA
 
 ## Environment Variables
 
 ### Frontend (.env.local)
 
-| Variable | Purpose | Default |
-|----------|---------|---------|
-| `VITE_API_BASE_URL` | Azure Function App API endpoint | `http://localhost:7071/api` |
+| Variable | Purpose | Usage |
+|----------|---------|-------|
+| `VITE_API_BASE_URL` | Azure Function App API endpoint | **Local dev only** - Set to `http://localhost:7071/api`. For Azure deployment, SWA handles routing automatically via linked API backend config. |
+
+### SWA Configuration (Azure Static Web Apps)
+
+No environment variables needed for the Function App URL! Instead:
+1. Link your Function App as an API backend in the SWA resource
+2. SWA automatically creates `/api` proxy routes to your Function App
+3. Your frontend calls `/api/data` and `/api/health` - SWA handles the routing
+4. No CORS issues because requests stay within Azure infrastructure
 
 ## Triggers and Routes
 
@@ -136,9 +136,44 @@ A dedicated component (`src/components/BackendTest.jsx`) for testing backend com
 | GetData | `/api/data` | GET, POST | Anonymous |
 | HealthCheck | `/api/health` | GET | Anonymous |
 
+## Deployment to Azure
+
+### Step 1: Link Function App to Static Web Apps
+
+When using Azure Static Web Apps, you link the Function App as an API backend. SWA automatically handles routing and proxying:
+
+```bash
+# Using Azure CLI
+az staticwebapp linkedbackend link \
+  --name <swa-name> \
+  --resource-group <resource-group> \
+  --backend-resource-id "/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.Web/sites/<function-app-name>"
+```
+
+Or via Azure Portal:
+1. Open your Static Web App resource
+2. Go to "Configuration" → "Linked backends"
+3. Add your Function App resource
+4. SWA automatically proxies `/api/*` requests to your Function App
+
+### Step 2: Update Frontend API Calls (Optional)
+
+For deployed instances using SWA's API linking, update `apiService.js`:
+
+```javascript
+// Use relative path - SWA proxies it to your Function App
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+```
+
+This way:
+- **Local dev**: Uses `http://localhost:7071/api` from `.env.local`
+- **Azure deployed**: Uses `/api` which SWA automatically proxies to your Function App
+
+No CORS needed because the request stays within Azure infrastructure!
+
 ## Next Steps
 
-1. Add authentication (Azure AD/Entra ID)
+1. Add authentication (Azure AD/Entra ID) via SWA authentication
 2. Implement request/response validation
 3. Add error handling and retry logic
 4. Set up API versioning
