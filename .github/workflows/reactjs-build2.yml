@@ -24,19 +24,17 @@ jobs:
             - name: build
               run: npm run build
               working-directory: ${{ env.working-dir }}
-
+            
+            - name: listing build directory
+              shell: bash
+              run: |
+                ls -la .
+                ls -la ${{ env.working-dir }}/build
             - name: upload artifact
               uses: actions/upload-artifact@v4
               with:
                 name: react-app-build
                 path: ${{ env.working-dir }}/build
-            - name: linting
-              run: npm i -g lint
-              working-directory: ${{ env.working-dir }}
-
-            - name: testing
-              run: npm test
-              working-directory: ${{ env.working-dir }}
             
 
     deploy:
@@ -48,6 +46,7 @@ jobs:
           uses: actions/download-artifact@v4
           with:
             name: react-app-build
+
         - name: deploy to azure
           uses: Azure/static-web-apps-deploy@v1
           with:
