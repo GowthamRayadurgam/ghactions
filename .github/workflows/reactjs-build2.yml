@@ -30,7 +30,7 @@ jobs:
               run: |
                 ls -la .
                 ls -la react-proj2
-                ls -la react-proj2/build
+                ls -la react-proj2/dist
             - name: upload artifact
               uses: actions/upload-artifact@v4
               with:
