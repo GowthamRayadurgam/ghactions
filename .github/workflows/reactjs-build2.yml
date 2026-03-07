@@ -29,12 +29,13 @@ jobs:
               shell: bash
               run: |
                 ls -la .
-                ls -la ${{ env.working-dir }}/build
+                ls -la react-proj2
+                ls -la react-proj2/build
             - name: upload artifact
               uses: actions/upload-artifact@v4
               with:
                 name: react-app-build
-                path: ${{ env.working-dir }}/build
+                path: react-proj2/build
             
 
     deploy:
