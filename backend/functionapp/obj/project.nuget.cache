@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "J57sRaPJPZE=",
+  "dgSpecHash": "7Sfgx+hQlUo=",
   "success": true,
   "projectFilePath": "C:\\Users\\gowtham_rayadurgam\\learning\\github-actions\\backend\\functionapp\\TestFunctionApp.csproj",
   "expectedPackageFiles": [
@@ -22,11 +22,11 @@
     "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.azure.functions.worker.applicationinsights\\1.3.0\\microsoft.azure.functions.worker.applicationinsights.1.3.0.nupkg.sha512",
     "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.azure.functions.worker.core\\1.19.0\\microsoft.azure.functions.worker.core.1.19.0.nupkg.sha512",
     "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.azure.functions.worker.extensions.abstractions\\1.3.0\\microsoft.azure.functions.worker.extensions.abstractions.1.3.0.nupkg.sha512",
-    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.azure.functions.worker.extensions.http\\3.0.13\\microsoft.azure.functions.worker.extensions.http.3.0.13.nupkg.sha512",
+    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.azure.functions.worker.extensions.http\\3.3.0\\microsoft.azure.functions.worker.extensions.http.3.3.0.nupkg.sha512",
     "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.azure.functions.worker.grpc\\1.16.0\\microsoft.azure.functions.worker.grpc.1.16.0.nupkg.sha512",
-    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.azure.functions.worker.sdk\\1.18.0\\microsoft.azure.functions.worker.sdk.1.18.0.nupkg.sha512",
+    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.azure.functions.worker.sdk\\1.17.2\\microsoft.azure.functions.worker.sdk.1.17.2.nupkg.sha512",
     "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.azure.functions.worker.sdk.analyzers\\1.2.1\\microsoft.azure.functions.worker.sdk.analyzers.1.2.1.nupkg.sha512",
-    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.azure.functions.worker.sdk.generators\\1.3.2\\microsoft.azure.functions.worker.sdk.generators.1.3.2.nupkg.sha512",
+    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.azure.functions.worker.sdk.generators\\1.2.1\\microsoft.azure.functions.worker.sdk.generators.1.2.1.nupkg.sha512",
     "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\1.0.0\\microsoft.extensions.caching.abstractions.1.0.0.nupkg.sha512",
     "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.extensions.caching.memory\\1.0.0\\microsoft.extensions.caching.memory.1.0.0.nupkg.sha512",
@@ -96,11 +96,7 @@
     "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
     "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512",
     "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
-    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
-    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
-    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
-    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.36\\microsoft.netcore.app.host.win-x64.6.0.36.nupkg.sha512"
+    "C:\\Users\\gowtham_rayadurgam\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

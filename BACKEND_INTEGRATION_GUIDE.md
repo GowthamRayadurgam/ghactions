@@ -55,7 +55,7 @@ func start
 az functionapp create --resource-group <rg-name> --consumption-plan-name <plan-name> --runtime dotnet --runtime-version 8 --functions-version 4 --name <function-app-name>
 
 # Deploy code
-func azure functionapp publish <function-app-name>
+func azure functionapp publish <Functionapp name> --build remote --force
 ```
 
 ## Frontend Setup (React)
