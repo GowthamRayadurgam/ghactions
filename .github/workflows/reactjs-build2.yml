@@ -25,12 +25,25 @@ jobs:
               run: npm run build
               working-directory: ${{ env.working-dir }}
             
+            - name: verify swa config in dist
+              shell: bash
+              run: |
+                if [ -f "${{ env.working-dir }}/dist/staticwebapp.config.json" ]; then
+                  echo "✓ staticwebapp.config.json found in dist/"
+                else
+                  echo "✗ staticwebapp.config.json NOT found in dist/"
+                  exit 1
+                fi
+            
             - name: listing build directory
               shell: bash
               run: |
                 ls -la .
                 ls -la react-proj2
                 ls -la react-proj2/dist
+                echo "---"
+                echo "SWA Config Content:"
+                cat react-proj2/dist/staticwebapp.config.json
             - name: upload artifact
               uses: actions/upload-artifact@v4
               with:
