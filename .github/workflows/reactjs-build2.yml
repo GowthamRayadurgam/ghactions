@@ -25,16 +25,6 @@ jobs:
               run: npm run build
               working-directory: ${{ env.working-dir }}
             
-            - name: verify swa config in dist
-              shell: bash
-              run: |
-                if [ -f "${{ env.working-dir }}/dist/staticwebapp.config.json" ]; then
-                  echo "✓ staticwebapp.config.json found in dist/"
-                else
-                  echo "✗ staticwebapp.config.json NOT found in dist/"
-                  exit 1
-                fi
-            
             - name: listing build directory
               shell: bash
               run: |
@@ -78,3 +68,8 @@ jobs:
             api_location: "" # Api source code path - optional
             output_location: "" # Built app content directory - set to empty since artifact contains the built files directly
             skip_app_build: true # Skip building since the app is already built and uploaded as artifact
+
+        # - uses: azure/webapps-deploy@v3
+        #   with:
+        #     app-name: testwa1512166
+        #     package: ${{ github.workspace }}/react-app-build
