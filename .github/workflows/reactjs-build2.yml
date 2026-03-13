@@ -33,7 +33,7 @@ jobs:
                 ls -la react-proj2/dist
                 echo "---"
                 echo "SWA Config Content:"
-                cat react-proj2/dist/staticwebapp.config.json
+#                cat react-proj2/dist/staticwebapp.config.json
             - name: upload artifact
               uses: actions/upload-artifact@v4
               with:
