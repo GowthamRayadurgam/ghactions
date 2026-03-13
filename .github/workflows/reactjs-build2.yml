@@ -59,17 +59,17 @@ jobs:
             ls -la ${{ github.workspace }}
             ls -la react-app-build
 
-        - name: deploy to azure
-          uses: Azure/static-web-apps-deploy@v1
-          with:
-            azure_static_web_apps_api_token: ${{ secrets.SWA_TOKEN }}
-            action: "upload"
-            app_location: "react-app-build" # Absolute path to the downloaded artifact containing built files
-            api_location: "" # Api source code path - optional
-            output_location: "" # Built app content directory - set to empty since artifact contains the built files directly
-            skip_app_build: true # Skip building since the app is already built and uploaded as artifact
-
-        # - uses: azure/webapps-deploy@v3
+        # - name: deploy to azure
+        #   uses: Azure/static-web-apps-deploy@v1
         #   with:
-        #     app-name: testwa1512166
-        #     package: ${{ github.workspace }}/react-app-build
+        #     azure_static_web_apps_api_token: ${{ secrets.SWA_TOKEN }}
+        #     action: "upload"
+        #     app_location: "react-app-build" # Absolute path to the downloaded artifact containing built files
+        #     api_location: "" # Api source code path - optional
+        #     output_location: "" # Built app content directory - set to empty since artifact contains the built files directly
+        #     skip_app_build: true # Skip building since the app is already built and uploaded as artifact
+
+        - uses: azure/webapps-deploy@v3
+          with:
+            app-name: testwa1512166
+            package: ${{ github.workspace }}/react-app-build
